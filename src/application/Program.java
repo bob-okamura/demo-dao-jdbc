@@ -1,28 +1,27 @@
 package application;
 
 import java.text.ParseException;
-import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 import model.dao.DaoFactory;
-import model.dao.SellerDao;
+import model.dao.DepartmentDao;
 import model.entities.Department;
-import model.entities.Seller;
 
 public class Program {
 
 	public static void main(String[] args) throws ParseException {
 		
 		Scanner sc = new Scanner(System.in);
+		
+		
 
-		SellerDao sellerDao = DaoFactory.createSellerDao();
+		/*SellerDao sellerDao = DaoFactory.createSellerDao();
 		Seller seller = sellerDao.findById(3);
 		
 		System.out.println("*** TEST 1 - findById ***");
 		System.out.println(seller);
 		
-		System.out.println("\n*** TEST 2 - findById ***");
+		System.out.println("\n*** TEST 2 - findByDepartment ***");
 		Department department = new Department(2, null);
 		List<Seller> list = sellerDao.findByDepartment(department);
 		
@@ -54,7 +53,39 @@ public class Program {
 		sellerDao.deleteById(id);
 		System.out.println("Deleted id = " + id);
 		
-		sc.close();
+		sc.close();*/
+		
+		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
+		
+		/*System.out.println("\n*** TEST 1 DEPARTMENT findById ***");
+		Department department = departmentDao.findById(1);
+		System.out.println(department);
+		
+		System.out.println("\n*** TEST 2 DEPARTMENT findAll ***");
+		List<Department> list = departmentDao.findAll();
+		
+		for(Department obj : list) {
+			System.out.println(obj);
+		}
+		
+		System.out.println("\n*** TEST 3 DEPARTMENT insert ***");
+		department.setName("Utilities");
+		departmentDao.insert(department);
+		
+		System.out.println("Insert new id= " + department.getId());*/
+		
+		System.out.println("\n*** TEST 4 DEPARTMENT update ***");
+		Department dep = new Department();
+		dep = departmentDao.findById(6);
+		dep.setName("XABLÁU");
+		departmentDao.update(dep);
+		
+		System.out.println("Id atualizado: " + dep.getId());
+		
+		System.out.println("\n*** TEST 5 DEPARTMENT delete ***");
+		departmentDao.deleteById(12);
+		System.out.println("Deleted!!");
+		
 		}
 
 }
